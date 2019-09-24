@@ -20,5 +20,8 @@ steps:
   
 - script: |
     gcc --version
+    gcc-6 --version
+    gcc-7 --version
+    gcc-8 --version
     cmake --version
     clang --version
