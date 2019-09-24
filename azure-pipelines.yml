@@ -37,7 +37,6 @@ steps:
       sudo update-alternatives --set cc /usr/bin/$(CC)
       sudo update-alternatives --install /usr/bin/c++ c++ /usr/bin/$(CXX) 100
       sudo update-alternatives --set c++ /usr/bin/$(CXX)
-      #if [[ "$CXX" == clang++* ]]; then CMAKE_CXX_FLAGS+=" -stdlib=libstdc++"; fi
     displayName: 'Install Build Dependencies'
 
   - task: CMake@1
