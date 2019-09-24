@@ -17,23 +17,23 @@ jobs:
   pool:
     vmImage: 'ubuntu-16.04'
   strategy:
-    matrix:
-      GCC-6 Debug:
-        CC: gcc-6
-        CXX: g++-6
-        BuildType: Debug
-
-      GCC-6 Release:
-        CC: gcc-6
-        CXX: g++-6
-        BuildType: Release
-    
+    matrix:  
       GCC-7 Debug:
         CC: gcc-7
         CXX: g++-7
         BuildType: Debug
 
       GCC-7 Release:
+        CC: gcc-7
+        CXX: g++-7
+        BuildType: Release
+
+      GCC-8 Debug:
+        CC: gcc-7
+        CXX: g++-7
+        BuildType: Debug
+
+      GCC-8 Release:
         CC: gcc-7
         CXX: g++-7
         BuildType: Release
@@ -45,7 +45,7 @@ jobs:
   - script: |
       sudo add-apt-repository ppa:ubuntu-toolchain-r/test
       sudo apt-get update
-      sudo apt-get install -y g++-6 g++-7
+      sudo apt-get install -y g++-8 g++-7
       sudo update-alternatives --install /usr/bin/cc cc /usr/bin/$(CC) 100
       sudo update-alternatives --set cc /usr/bin/$(CC)
       sudo update-alternatives --install /usr/bin/c++ c++ /usr/bin/$(CXX) 100
@@ -59,3 +59,4 @@ jobs:
       cmakeArgs: '.. -DCMAKE_BUILD_TYPE=$(BuildType)'
 
   - script: make -j -C build
+    displayName: 'Compiling'
