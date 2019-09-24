@@ -3,25 +3,44 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
+# Trigger on push to master branch
 trigger:
 - master
 
-pool:
-  vmImage: 'ubuntu-latest'
+# Trigger on pull request to master branch
+pr:
+- master
+
+jobs:
+- job:
+  displayName: Linux
+  pool:
+    vmImage: 'ubuntu-16.04'
+  strategy:
+    matrix:
+      GCC-7 Debug:
+        CC: gcc-7
+        CXX: g++-7
+        BuildType: Debug
+
+      GCC-7 Release:
+        CC: gcc-7
+        CXX: g++-7
+        BuildType: Release
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+  - script: |
+      sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+      sudo apt-get update
+      sudo apt-get install -y g++-7
+      sudo update-alternatives --install /usr/bin/cc cc /usr/bin/$(CC) 100
+      sudo update-alternatives --set cc /usr/bin/$(CC)
+      sudo update-alternatives --install /usr/bin/c++ c++ /usr/bin/$(CXX) 100
+      sudo update-alternatives --set c++ /usr/bin/$(CXX)
+      #if [[ "$CXX" == clang++* ]]; then CMAKE_CXX_FLAGS+=" -stdlib=libstdc++"; fi
+    displayName: 'Install Build Dependencies'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
-  
-- script: |
-    gcc --version
-    gcc-6 --version
-    gcc-7 --version
-    gcc-8 --version
-    cmake --version
-    clang --version
+  - task: CMake@1
+    displayName: 'CMake .. $(CMakeArgs) -DCMAKE_BUILD_TYPE=$(BuildType)'
+    inputs:
+      cmakeArgs: '.. $(CMakeArgs) -GNinja -DCMAKE_BUILD_TYPE=$(BuildType)'
