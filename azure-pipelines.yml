@@ -29,6 +29,9 @@ jobs:
         BuildType: Release
 
   steps:
+  - checkout: self
+    submodules: true
+  
   - script: |
       sudo add-apt-repository ppa:ubuntu-toolchain-r/test
       sudo apt-get update
@@ -42,4 +45,4 @@ jobs:
   - task: CMake@1
     displayName: 'CMake .. $(CMakeArgs) -DCMAKE_BUILD_TYPE=$(BuildType)'
     inputs:
-      cmakeArgs: '.. $(CMakeArgs) -GNinja -DCMAKE_BUILD_TYPE=$(BuildType)'
+      cmakeArgs: '.. $(CMakeArgs) -DCMAKE_BUILD_TYPE=$(BuildType)'
