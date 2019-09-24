@@ -47,4 +47,4 @@ jobs:
     inputs:
       cmakeArgs: '.. -DCMAKE_BUILD_TYPE=$(BuildType)'
 
-  - script: make -j
+  - script: make -j -C build
