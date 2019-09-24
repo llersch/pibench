@@ -28,7 +28,7 @@ jobs:
         CXX: g++-7
         BuildType: Release
 
-steps:
+  steps:
   - script: |
       sudo add-apt-repository ppa:ubuntu-toolchain-r/test
       sudo apt-get update
