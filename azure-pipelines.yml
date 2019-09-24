@@ -37,6 +37,26 @@ jobs:
         CC: gcc-7
         CXX: g++-7
         BuildType: Release
+        
+      GCC-9 Debug:
+        CC: gcc-9
+        CXX: g++-9
+        BuildType: Debug
+
+      GCC-9 Release:
+        CC: gcc-9
+        CXX: g++-9
+        BuildType: Release
+
+      Clang-9 Debug:
+        CC: clang-9
+        CXX: clang++-9
+        BuildType: Debug
+
+      Clang-9 Release:
+        CC: clang-9
+        CXX: clang++-8
+        BuildType: Release        
 
   steps:
   - checkout: self
@@ -45,11 +65,12 @@ jobs:
   - script: |
       sudo add-apt-repository ppa:ubuntu-toolchain-r/test
       sudo apt-get update
-      sudo apt-get install -y g++-8 g++-7
+      sudo apt-get install -y g++-7 g++-8 g++-9 clang-9
       sudo update-alternatives --install /usr/bin/cc cc /usr/bin/$(CC) 100
       sudo update-alternatives --set cc /usr/bin/$(CC)
       sudo update-alternatives --install /usr/bin/c++ c++ /usr/bin/$(CXX) 100
       sudo update-alternatives --set c++ /usr/bin/$(CXX)
+      if [[ "$CXX" == clang++* ]]; then sudo apt-get install -y libomp-dev ; fi
     displayName: 'Install Build Dependencies'
 
   - task: CMake@1
