@@ -43,6 +43,6 @@ jobs:
     displayName: 'Install Build Dependencies'
 
   - task: CMake@1
-    displayName: 'CMake .. $(CMakeArgs) -DCMAKE_BUILD_TYPE=$(BuildType)'
+    displayName: 'CMake .. -DCMAKE_BUILD_TYPE=$(BuildType)'
     inputs:
-      cmakeArgs: '.. $(CMakeArgs) -DCMAKE_BUILD_TYPE=$(BuildType)'
+      cmakeArgs: '.. -DCMAKE_BUILD_TYPE=$(BuildType)'
