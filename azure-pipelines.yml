@@ -48,13 +48,13 @@ jobs:
         CXX: g++-9
         BuildType: Release
 
-      Clang-9 Debug:
-        CC: clang-9
-        CXX: clang++-9
+      Clang-8 Debug:
+        CC: clang-8
+        CXX: clang++-8
         BuildType: Debug
 
-      Clang-9 Release:
-        CC: clang-9
+      Clang-8 Release:
+        CC: clang-8
         CXX: clang++-8
         BuildType: Release        
 
