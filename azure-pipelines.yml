@@ -54,13 +54,13 @@ jobs:
         Packages: g++-9
         BuildType: Release
 
-      Clang-6 Debug:
+      Clang-6.0 Debug:
         CC: clang-6.0
         CXX: clang++-6.0
         Packages: clang-6.0 libomp-dev
         BuildType: Debug
 
-      Clang-6 Release:
+      Clang-6.0 Release:
         CC: clang-6.0
         CXX: clang++-6.0
         Packages: clang-6.0 libomp-dev
