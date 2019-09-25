@@ -92,3 +92,17 @@ jobs:
     
   - script: make test -C build
     displayName: 'Running tests'
+    
+- job:
+  displayName: Docker Ubuntu-16.04
+  pool:
+    vmImage: 'ubuntu-16.04'
+  steps:
+  - checkout: self
+    submodules: true
+
+   - script: docker build -t pibench .  # add options to this command to meet your needs
+     displayName: 'Build the code'
+
+   - script: docker run pibench
+     displayName: 'Run tests'
