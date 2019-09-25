@@ -57,13 +57,13 @@ jobs:
       Clang-6 Debug:
         CC: clang-6
         CXX: clang++-6
-        Packages: clang-6 libomp-dev
+        Packages: clang-6.0 libomp-dev
         BuildType: Debug
 
       Clang-6 Release:
         CC: clang-6
         CXX: clang++-8
-        Packages: clang-6 libomp-dev
+        Packages: clang-6.0 libomp-dev
         BuildType: Release        
 
   steps:
@@ -78,6 +78,7 @@ jobs:
       sudo update-alternatives --set cc /usr/bin/$(CC)
       sudo update-alternatives --install /usr/bin/c++ c++ /usr/bin/$(CXX) 100
       sudo update-alternatives --set c++ /usr/bin/$(CXX)
+      sudo apt-cache search clang
     displayName: 'Install Build Dependencies'
 
   - task: CMake@1
