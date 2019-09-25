@@ -1,6 +1,6 @@
 FROM alpine:latest
 RUN apk add --no-cache \
-  build-base
+  build-base \
   cmake \
 COPY . /usr/src/pibench
 WORKDIR /usr/src/pibench
