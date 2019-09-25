@@ -1,7 +1,7 @@
 ARG os_base=ubuntu:18.04
+FROM $os_base
 ARG CC=gcc-9
 ARG CXX=g++-9
-FROM $os_base
 RUN apt-get update && apt-get -y install \
   cmake \
   $CC \
