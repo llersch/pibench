@@ -1,15 +1,8 @@
-ARG os_base=ubuntu:18.04
-FROM $os_base
-ARG CC=gcc-8
-ARG CXX=g++-8
-RUN apt-get update && apt-get -y install \
+FROM alpine:latest
+RUN apk add --no-cache \
   cmake \
-  $CC \
-  $CXX
-RUN update-alternatives --install /usr/bin/cc cc /usr/bin/$CC 100 && \
-  update-alternatives --set cc /usr/bin/$CC && \
-  update-alternatives --install /usr/bin/c++ c++ /usr/bin/$CXX 100 && \
-  update-alternatives --set c++ /usr/bin/$CXX
+  gcc \
+  g++
 COPY . /usr/src/pibench
 WORKDIR /usr/src/pibench
 RUN mkdir build_tmp && cd build_tmp && cmake -DCMAKE_BUILD_TYPE=Release .. && make
