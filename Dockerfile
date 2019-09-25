@@ -1,4 +1,4 @@
-FROM ubuntu-18.04
+FROM ubuntu:18.04
 RUN apt-get -y install g++ cmake
 COPY . /usr/src/pibench
 WORKDIR /usr/src/pibench
