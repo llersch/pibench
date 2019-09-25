@@ -15,7 +15,7 @@ jobs:
 - job:
   displayName: Ubuntu-16.04
   pool:
-    vmImage: 'ubuntu-16.04'
+    vmImage: 'ubuntu-18.04'
   strategy:
     matrix:  
       GCC-7 Debug:
