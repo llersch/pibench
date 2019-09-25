@@ -55,16 +55,22 @@ jobs:
         BuildType: Release
 
       Clang-6 Debug:
-        CC: clang-6
-        CXX: clang++-6
+        CC: clang-6.0
+        CXX: clang++-6.0
         Packages: clang-6.0 libomp-dev
         BuildType: Debug
 
       Clang-6 Release:
-        CC: clang-6
-        CXX: clang++-8
+        CC: clang-6.0
+        CXX: clang++-6.0
         Packages: clang-6.0 libomp-dev
-        BuildType: Release        
+        BuildType: Release
+        
+      Clang-7 Debug:
+        CC: clang-7.0
+        CXX: clang++-7.0
+        Packages: clang-7.0 libomp-dev
+        BuildType: Debug
 
   steps:
   - checkout: self
