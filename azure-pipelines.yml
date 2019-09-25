@@ -13,7 +13,7 @@ pr:
 
 jobs:
 - job:
-  displayName: Linux
+  displayName: Ubuntu-16.04
   pool:
     vmImage: 'ubuntu-16.04'
   strategy:
@@ -65,12 +65,6 @@ jobs:
         CXX: clang++-6.0
         Packages: clang-6.0 libomp-dev
         BuildType: Release
-        
-      Clang-7 Debug:
-        CC: clang-7.0
-        CXX: clang++-7.0
-        Packages: clang-7.0 libomp-dev
-        BuildType: Debug
 
   steps:
   - checkout: self
@@ -95,3 +89,6 @@ jobs:
 
   - script: make -j -C build
     displayName: 'Compiling'
+    
+  - script: make test -C build
+    displayName: 'Running tests'
