@@ -44,7 +44,6 @@ include_directories("${PROJECT_SOURCE_DIR}/include"
 add_subdirectory(src)
 
 if(BUILD_TESTING)
-    add_subdirectory(googletest)
     add_subdirectory(tests)
 endif()
 
