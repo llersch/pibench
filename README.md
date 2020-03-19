@@ -15,3 +15,8 @@ Evaluating Persistent Memory Range Indexes. PVLDB 13(4): 574-587 (2019)
 ````
 
 See our [wiki](https://github.com/llersch/pibench/wiki) for more details.
+
+# Contact
+You can reach us through our [mailing list](https://groups.google.com/forum/#!forum/pibench) by sending an e-mail to: pibench@googlegroup.com
+
+Alternatively you can contact us through a private e-mail address: support@pibench.org
